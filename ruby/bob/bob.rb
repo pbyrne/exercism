@@ -1,19 +1,29 @@
 class Bob
   def hey(input)
-    input = sanitized_input(input)
-
-    if input == ''
-      "Fine. Be that way!"
-    elsif input == input.upcase
-      "Woah, chill out!"
-    elsif input.end_with? "?"
-      "Sure."
-    else
-      "Whatever."
-    end
+    Responder.new(input).response
   end
 
-  def sanitized_input(input)
-    input.to_s
+  class Responder
+    attr_accessor :input
+
+    def initialize(input)
+      self.input = input
+    end
+
+    def input
+      @input ||= ""
+    end
+
+    def response
+      if input == ""
+        "Fine. Be that way!"
+      elsif input == input.upcase
+        "Woah, chill out!"
+      elsif input.end_with? "?"
+        "Sure."
+      else
+        "Whatever."
+      end
+    end
   end
 end
