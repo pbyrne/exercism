@@ -16,14 +16,32 @@ class Bob
 
     def response
       if input == ""
-        "Fine. Be that way!"
+        response_to_silence
       elsif input == input.upcase
-        "Woah, chill out!"
+        response_to_anger
       elsif input.end_with? "?"
-        "Sure."
+        response_to_question
       else
-        "Whatever."
+        response_to_anything_else
       end
+    end
+
+  private
+
+    def response_to_silence
+      "Fine. Be that way!"
+    end
+
+    def response_to_anger
+      "Woah, chill out!"
+    end
+
+    def response_to_question
+      "Sure."
+    end
+
+    def response_to_anything_else
+      "Whatever."
     end
   end
 end
